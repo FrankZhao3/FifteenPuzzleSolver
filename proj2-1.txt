@@ -1,0 +1,15 @@
+Partner 1 Name: Chengxiang Hu
+Partner 1 Login: cs61c-aem
+
+Partner 2 Name: Hangpeng Zhao
+Partner 2 Login: cs61c-ael
+
+1.
+Generate all the permutations of blocks that satisfy the solution predicate causes potential problem because we have multiple solutions that each solution may appears in different levels. When we used position as the key, and level as the value, reduceByKey will potential reduce the solutions. Therefore,  it is impossible to reach the complete solution. For example, we assume in level n we have [3 － 2 1] and [1 3 2 -] in level n + 1, we will reduce the one of its solutions. Therefore, we will get an incomplete path in the end.
+
+2.
+We would like to modify our original solver by having level as key and positions as values in the emitting key-value pair. Then when reducing the duplicated values that have the same key, all the possible paths to the solutions shall be kept.
+
+3.
+In order to solve Peg Solitaire, the change we need to make is emit the pair by using position as key and level as the value and also we should store whether the position is valid or not. we need to use the coordinates to be the position of a peg and use a different method to set up the ending condition. 
+We will need to change the memory requirements of our solver because in each level the moves exponentially increases and we will need more memory to store the moves. 
